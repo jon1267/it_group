@@ -28,4 +28,18 @@ class FilmPoster
 
         return $imgPath;
     }
+
+    public function updatePoster($request, $film)
+    {
+        $imgPath = $film->img;
+
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            if ($image->isValid()) {
+                $imgPath = $this->getPoster($request);
+            }
+        }
+
+        return $imgPath;
+    }
 }

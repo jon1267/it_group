@@ -86,7 +86,7 @@ class FilmController extends Controller
     public function update(StoreFilmRequest $request, Film $film)
     {
         $data = $request->except('_token', '_method' ,'category');
-        $data['img'] = $film->img ?? $this->poster->getPoster($request);
+        $data['img'] = $this->poster->updatePoster($request, $film);
         $data['publish'] = 0;
         $categories = $request->category;
 
